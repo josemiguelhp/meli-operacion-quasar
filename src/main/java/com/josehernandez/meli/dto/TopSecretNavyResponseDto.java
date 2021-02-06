@@ -1,4 +1,4 @@
-package com.josehernandez.meli.models;
+package com.josehernandez.meli.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ import java.awt.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Navy {
-    private Point position;
+public class TopSecretNavyResponseDto {
+    private Point positon;
     private String message;
 }
