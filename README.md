@@ -1,6 +1,6 @@
 # meli-operacion-quasar
 
-## Correr local
+# Correr local
 Asegurese que tiene instalado +java 8 y el JAVA_HOME configurado, use
 `./gradlew bootRun` para correr el proyecto local
 
