@@ -6,7 +6,7 @@ name: Build and deploy JAR app to Azure Web App - meli-operacion-quarsar
 on:
   push:
     branches:
-      - master
+      - staging
   workflow_dispatch:
 
 jobs:
@@ -26,11 +26,3 @@ jobs:
 
     - name: Run Tests
       run: ./gradlew test
-
-    - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'meli-operacion-quarsar'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_3319008746464d758906abdcc4ff0221 }}
-        package: '${{ github.workspace }}/build/libs/*.jar'
