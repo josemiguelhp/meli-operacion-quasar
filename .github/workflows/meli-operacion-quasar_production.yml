@@ -22,3 +22,11 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew bootJar
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'meli-operacion-quarsar'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_a4f32a33f1fd4adcb29fdfe015f46a93 }}
+          package: '${{ github.workspace }}/build/libs/*.jar'
