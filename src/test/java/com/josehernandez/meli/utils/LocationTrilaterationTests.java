@@ -24,9 +24,10 @@ public class LocationTrilaterationTests {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(position);
         assert position != null;
-        Assertions.assertThat(position.getX()).isEqualTo(-487.28592f);
-        Assertions.assertThat(position.getY()).isEqualTo(1557.0143f);
+        Assertions.assertThat(position.getX()).isEqualTo(-58.31525f);
+        Assertions.assertThat(position.getY()).isEqualTo(-69.551414f);
     }
 }
 
