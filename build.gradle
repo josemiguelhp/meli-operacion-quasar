@@ -23,8 +23,11 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok:1.18.16'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
 	compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+	compile 'org.apache.commons:commons-math3:3.6.1'
+	implementation 'com.lemmingapex.trilateration:trilateration:1.0.2'
 }
 
 test {
+	testLogging.showStandardStreams = true
 	useJUnitPlatform()
 }

@@ -1,14 +1,14 @@
 package com.josehernandez.meli.service;
 
-import com.josehernandez.meli.dto.TopSecretNavyRequestDto;
-import com.josehernandez.meli.dto.TopSecretNavyResponseDto;
+import com.josehernandez.meli.dto.TopSecretShipRequestDto;
+import com.josehernandez.meli.dto.TopSecretShipResponseDto;
 
 public interface RebelsService {
     /**
      * Register a new navy coordinates-message information
      *
-     * @param topSecretNavyRequestDto
+     * @param topSecretShipRequestDto
      * @return
      */
-    TopSecretNavyResponseDto getNavyInfo(TopSecretNavyRequestDto topSecretNavyRequestDto);
+    TopSecretShipResponseDto getNavyInfo(TopSecretShipRequestDto topSecretShipRequestDto);
 }

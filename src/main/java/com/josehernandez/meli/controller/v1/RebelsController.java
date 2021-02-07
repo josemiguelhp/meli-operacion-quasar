@@ -1,7 +1,7 @@
 package com.josehernandez.meli.controller.v1;
 
-import com.josehernandez.meli.dto.TopSecretNavyRequestDto;
-import com.josehernandez.meli.dto.TopSecretNavyResponseDto;
+import com.josehernandez.meli.dto.TopSecretShipRequestDto;
+import com.josehernandez.meli.dto.TopSecretShipResponseDto;
 import com.josehernandez.meli.service.RebelsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +22,12 @@ public class RebelsController {
     /**
      * Handles the incoming POST API "/v1/topsecret"
      *
-     * @param topSecretNavyRequestDto
+     * @param topSecretShipRequestDto
      * @return
      */
     @PostMapping("/topsecret")
-    public ResponseEntity<TopSecretNavyResponseDto> createNavy(@RequestBody @Valid TopSecretNavyRequestDto topSecretNavyRequestDto) {
-        TopSecretNavyResponseDto topSecretNavyResponseDto = rebelsService.getNavyInfo(topSecretNavyRequestDto);
-        return ResponseEntity.ok(topSecretNavyResponseDto);
+    public ResponseEntity<TopSecretShipResponseDto> createShip(@RequestBody @Valid TopSecretShipRequestDto topSecretShipRequestDto) {
+        TopSecretShipResponseDto topSecretShipResponseDto = rebelsService.getNavyInfo(topSecretShipRequestDto);
+        return ResponseEntity.ok(topSecretShipResponseDto);
     }
 }

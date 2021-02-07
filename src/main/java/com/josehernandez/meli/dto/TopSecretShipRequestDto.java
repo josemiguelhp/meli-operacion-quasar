@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class TopSecretNavyRequestDto {
+public class TopSecretShipRequestDto {
     @NotEmpty(message = "{constraints.NotEmpty.message}")
     private List<Satellite> satellites;
 }
