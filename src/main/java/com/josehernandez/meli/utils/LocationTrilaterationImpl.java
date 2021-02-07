@@ -1,41 +1,44 @@
 package com.josehernandez.meli.utils;
 
 
-import com.lemmingapex.trilateration.LinearLeastSquaresSolver;
 import com.lemmingapex.trilateration.NonLinearLeastSquaresSolver;
 import com.lemmingapex.trilateration.TrilaterationFunction;
 import org.apache.commons.math3.fitting.leastsquares.LeastSquaresOptimizer;
 import org.apache.commons.math3.fitting.leastsquares.LevenbergMarquardtOptimizer;
-import org.apache.commons.math3.linear.RealMatrix;
-import org.apache.commons.math3.linear.RealVector;
 
-//Nivel 1
+
 //https://es.wikipedia.org/wiki/Trilateraci%C3%B3n
 public class LocationTrilaterationImpl implements LocationTrilateration {
 
     @Override
-    public Point getLocation(float distanceKenobi, float distanceSkywalker, float distanceSato) throws Exception {
-        Point kenobiP=new Point(-500, -200);//se podria obtener la posicion actual de una base de datos o un archivo externo, por practicidad lo pongo aca
-        Point skywalkerP=new Point(100, -100);
-        Point satoP=new Point(500, 100);
-        //https://github.com/lemmingapex/Trilateration
-        double[][] positions = new double[][] { { kenobiP.getX(), kenobiP.getY()}, { skywalkerP.getX(), skywalkerP.getY() }, { satoP.getX(), satoP.getY() } };
-        double[] distances = new double[] { distanceKenobi, distanceSkywalker, distanceSato };
+    public Point getLocation(final float distanceKenobi, final float distanceSkywalker, final float distanceSato) throws Exception {
+        Point kenobiP = new Point(-500, -200);
+        Point skywalkerP = new Point(100, -100);
+        Point satoP = new Point(500, 100);
+        double[][] positions = new double[][]{{kenobiP.getX(), kenobiP.getY()}, {skywalkerP.getX(), skywalkerP.getY()}, {satoP.getX(), satoP.getY()}};
+        double[] distances = new double[]{distanceKenobi, distanceSkywalker, distanceSato};
+        return getLocation(distances, positions);
+    }
 
+    public Point getLocation(final double[] distances, final double[][] positions) throws Exception {
+        //https://github.com/lemmingapex/Trilateration
+        if (positions.length != distances.length) {
+            throw new IllegalArgumentException("numero de elementos difiere entre posiciones y distancias");
+        }
         TrilaterationFunction trilaterationFunction = new TrilaterationFunction(positions, distances);
         NonLinearLeastSquaresSolver nlSolver = new NonLinearLeastSquaresSolver(trilaterationFunction, new LevenbergMarquardtOptimizer());
         LeastSquaresOptimizer.Optimum optimum = nlSolver.solve();
         double[] calculatedPosition = optimum.getPoint().toArray();
         // error and geometry information (https://stackoverflow.com/questions/30336278/multi-point-trilateration-algorithm-in-java)
         try {
-            if(calculatedPosition==null || calculatedPosition.length!=2)
+            if (calculatedPosition == null || calculatedPosition.length != 2)
                 throw new Exception();
             optimum.getSigma(0);
             optimum.getCovariances(0);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new Exception("Imposible calcular la posicion de la nave");
         }
-        return new Point((float)calculatedPosition[0],(float) calculatedPosition[1]);
+        return new Point((float) calculatedPosition[0], (float) calculatedPosition[1]);
     }
 
     /*

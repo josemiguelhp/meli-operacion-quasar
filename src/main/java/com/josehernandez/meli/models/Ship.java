@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Ship {
+public class Ship extends BaseModel{
     private Point position;
     private String message;
 }

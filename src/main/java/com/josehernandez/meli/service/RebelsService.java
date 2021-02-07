@@ -10,5 +10,5 @@ public interface RebelsService {
      * @param topSecretShipRequestDto
      * @return
      */
-    TopSecretShipResponseDto getNavyInfo(TopSecretShipRequestDto topSecretShipRequestDto);
+    TopSecretShipResponseDto getNavyInfo(final TopSecretShipRequestDto topSecretShipRequestDto);
 }

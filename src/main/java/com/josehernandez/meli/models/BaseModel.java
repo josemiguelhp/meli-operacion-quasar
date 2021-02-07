@@ -7,11 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Satellite extends BaseModel{
+public class BaseModel {
 
-    private String name;
+    private int id;
 
-    private float distance;
-
-    private String[] message;
 }
