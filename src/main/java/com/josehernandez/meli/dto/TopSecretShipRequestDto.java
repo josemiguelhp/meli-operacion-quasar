@@ -6,12 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class TopSecretShipRequestDto {
-    @NotEmpty(message = "{constraints.NotEmpty.message}")
+    @NotNull
     private List<Satellite> satellites;
 }

@@ -1,6 +1,7 @@
 package com.josehernandez.meli.utils;
 
 
+import com.josehernandez.meli.exception.CalculationIndeterminacyException;
 import com.lemmingapex.trilateration.NonLinearLeastSquaresSolver;
 import com.lemmingapex.trilateration.TrilaterationFunction;
 import org.apache.commons.math3.fitting.leastsquares.LeastSquaresOptimizer;
@@ -34,11 +35,11 @@ public class LocationTrilaterationImpl implements LocationTrilateration {
         // error and geometry information (https://stackoverflow.com/questions/30336278/multi-point-trilateration-algorithm-in-java)
         try {
             if (calculatedPosition == null || calculatedPosition.length != 2)
-                throw new Exception();
+                throw new CalculationIndeterminacyException("Imposible calcular la posicion de la nave");
             optimum.getSigma(0);
             optimum.getCovariances(0);
         } catch (Exception e) {
-            throw new Exception("Imposible calcular la posicion de la nave");
+            throw new CalculationIndeterminacyException("Imposible calcular la posicion de la nave");
         }
         return new Point((float) calculatedPosition[0], (float) calculatedPosition[1]);
     }

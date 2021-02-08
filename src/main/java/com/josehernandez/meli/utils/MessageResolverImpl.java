@@ -1,5 +1,6 @@
 package com.josehernandez.meli.utils;
 
+import com.josehernandez.meli.exception.CalculationIndeterminacyException;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -63,7 +64,7 @@ public class MessageResolverImpl implements MessageResolver {
                     //comparamos con el resto de la columna que ya analizamos a ver existe alguna palabra diferente
                     for (String word : columnWords) {
                         if (word != null && !word.equals(columnMessage)) {
-                            throw new Exception("no es posible determinar el mensaje");
+                            throw new CalculationIndeterminacyException("no es posible determinar el mensaje");
                         }
                     }
                     columnWords[i] = columnMessage;
