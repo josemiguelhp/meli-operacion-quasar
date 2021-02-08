@@ -5,9 +5,11 @@ import com.lemmingapex.trilateration.NonLinearLeastSquaresSolver;
 import com.lemmingapex.trilateration.TrilaterationFunction;
 import org.apache.commons.math3.fitting.leastsquares.LeastSquaresOptimizer;
 import org.apache.commons.math3.fitting.leastsquares.LevenbergMarquardtOptimizer;
+import org.springframework.stereotype.Component;
 
 
 //https://es.wikipedia.org/wiki/Trilateraci%C3%B3n
+@Component
 public class LocationTrilaterationImpl implements LocationTrilateration {
 
     @Override

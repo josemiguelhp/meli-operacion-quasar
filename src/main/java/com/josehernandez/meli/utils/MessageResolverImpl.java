@@ -1,11 +1,14 @@
 package com.josehernandez.meli.utils;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Component
 public class MessageResolverImpl implements MessageResolver {
 
     @Override
