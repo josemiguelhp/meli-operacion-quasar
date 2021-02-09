@@ -1,14 +1,13 @@
 package com.josehernandez.meli.dto;
 
 import com.josehernandez.meli.utils.Point;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-@Getter
-@Setter
+@Data
+@SuperBuilder
 @NoArgsConstructor
-public class TopSecretShipResponseDto {
+public class TopSecretResponseDto {
     private Point positon;
     private String message;
 }

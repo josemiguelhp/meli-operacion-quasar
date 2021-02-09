@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /*
     Deberia usar sprinboot data para interactuar con base de datos pero en las consignas no exigian implementar una base de datos
@@ -14,7 +15,7 @@ import java.util.List;
 @Component
 public class SatelliteRepository {
 
-    private List<Satellite> satellites;
+    private final List<Satellite> satellites;
 
     public SatelliteRepository() {
         Satellite kenobi = new Satellite();
@@ -30,13 +31,34 @@ public class SatelliteRepository {
         satellites.add(kenobi);
         satellites.add(skywalker);
         satellites.add(sato);
+        resetSatellitesObservations();
     }
 
-    public double[] findSatellitePosition(String name) {
+    public double[] findPositionByName(String name) {
         for (Satellite satellite:satellites) {
             if(satellite.getName().equals(name))
                 return new double[]{satellite.getPosition().getX(), satellite.getPosition().getY()};
         }
         return null;
+    }
+
+    public List<Satellite> findSatellites() {
+        return satellites;
+    }
+
+    public void resetSatellitesObservations() {
+        satellites.forEach((Satellite satellite)->{
+            satellite.setDistance(-1);
+            satellite.setMessage(null);
+        });
+    }
+
+    public Boolean updateDistanceAndMessageByName(String satelliteName, float distance, String[] message) {
+        Optional<Satellite> satelliteFind = satellites.stream().filter((Satellite satellite)->satellite.getName().equals(satelliteName)).findFirst();
+        if(satelliteFind.isPresent()){
+            satelliteFind.get().setDistance(distance);
+            satelliteFind.get().setMessage(message);
+        }
+        return satelliteFind.isPresent();
     }
 }
