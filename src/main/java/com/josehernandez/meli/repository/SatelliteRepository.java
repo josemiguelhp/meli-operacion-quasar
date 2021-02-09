@@ -19,12 +19,15 @@ public class SatelliteRepository {
 
     public SatelliteRepository() {
         Satellite kenobi = new Satellite();
+        kenobi.setId(0);
         kenobi.setName("kenobi");
         kenobi.setPosition(new Point(-500,-200));
         Satellite skywalker = new Satellite();
+        skywalker.setId(1);
         skywalker.setName("skywalker");
         skywalker.setPosition(new Point(100,-100));
         Satellite sato = new Satellite();
+        sato.setId(2);
         sato.setName("sato");
         sato.setPosition(new Point(500,-100));
         satellites = new ArrayList<>();
