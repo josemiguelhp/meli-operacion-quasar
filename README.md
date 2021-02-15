@@ -24,8 +24,8 @@ estandar o premium para usar espacios de implementacion. por lo que solo se desp
 La aplicacion aprovecha la libreria de Swagger que nos proporciona Spring Boot para autodocumentar todos los servicios REST automaticamente, para acceder =>
 local:<http://localhost:8080/api/swagger-ui.html> produccion:<https://meli-operacion-quarsar.azurewebsites.net/api/swagger-ui.html>
 ## Ejemplos para probar
-Nivel 2
--------
+Puede encontrar la coleccion de postman en la raiz del proyecto...
+
 POST a <https://meli-operacion-quarsar.azurewebsites.net/api/v1/topsecret>
 ```json
 {
@@ -48,4 +48,13 @@ POST a <https://meli-operacion-quarsar.azurewebsites.net/api/v1/topsecret>
    ]
 }
 ```
-local: localhost:8080/api/v1/topsecret
+POST a <https://meli-operacion-quarsar.azurewebsites.net/api/v1/topsecret_split/sato>
+```json
+{
+  "distance": 100.0,
+  "message": ["este", "", "", "mensaje", ""]
+}
+```
+GET a <https://meli-operacion-quarsar.azurewebsites.net/api/v1/topsecret_split>
+
+GET a <https://meli-operacion-quarsar.azurewebsites.net/api/v1/satellites> (endpoint adicional)
